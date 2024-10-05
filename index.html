@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feet Conversion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #4999f9;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #e9ecef;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        input, select, button {
+            width: 450px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <ul>
+        <li><a href="#">Miro's Home</a></li>
+        <li><a href="#">About Convert app</a></li>
+        <li><a href="#">Contact me</a></li>
+    </ul>
+</div>
+
+<div class="content">
+    <div class="container">
+        <h2>Convert Feet</h2>
+        <form method="POST">
+            <div style="white-space: pre-wrap;">
+            <label for="feet">Enter number in feet:</label>
+            <input type="number" id="feet" name="feet" placeholder="Enter number in feet" required>
+            </div>
+
+            <div style="white-space: pre-wrap;">
+            <label for="unit">Convert to:</label>
+            <select id="unit" name="unit">
+                <option value="inches">Inches</option>
+                <option value="yards">Yards</option>
+                <option value="miles">Miles</option>
+            </select>
+            <button type="submit">Convert</button></div>
+        </form>
+
+        {% if result is not none %}
+        <div class="result">
+            <p>Result: {{ result }} {{ request.form['unit'] }}</p>
+        </div>
+        {% else %}
+        <div class="result">
+            <p>No result</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
